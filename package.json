@@ -1,0 +1,19 @@
+{
+  "name": "tictactoe",
+  "version": "1.0.0",
+  "description": "command-line tic tac toe app",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kmenghini/ticTacToe.git"
+  },
+  "author": "Kaitlyn Menghini",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kmenghini/ticTacToe/issues"
+  },
+  "homepage": "https://github.com/kmenghini/ticTacToe#readme"
+}
