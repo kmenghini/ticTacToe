@@ -3,6 +3,7 @@ console.log('Welcome to Tic Tac Toe');
 class Game {
   constructor() {
     this.board = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
+    this.lastPlayer = null;
     console.log(this.drawBoard())
   }
   drawBoard() {
@@ -15,13 +16,16 @@ class Game {
   }
   newMove(row, column, player) {
     //change board at [row, column] to player
-    if (player !== 'X' && player !== 'O') {
+    if (player === this.lastPlayer) {
+      console.log('not your turn!')
+    } else if (player !== 'X' && player !== 'O') {
       console.log('use X or O to make your move')
     } else {
       if (!this.checkSquare(row, column)) {
         this.board[row][column] = player;
+        this.lastPlayer = player;
         if (this.checkForWin(row, column, player)) {
-          console.log(`player ${player} wins!`);
+          console.log(`${player} WINS!`);
         }
       } else {
         console.log('square already taken - try a different one!')
@@ -57,9 +61,15 @@ class Game {
 
 var test = new Game();
 test.newMove(0, 0, 'X')
-test.newMove(0, 1, 'X')
-test.newMove(0, 2, 'X')
-console.log(test.checkRow(0, 'X'))
+test.newMove(0, 1, 'X') // -> 'not your turn'
+test.newMove(0, 1, 'O') 
+test.newMove(0, 1, 'X') // -> 'square already taken'
+test.newMove(1, 0, 'X')
+test.newMove(1, 1, 'O')
+test.newMove(2, 0, 'X') // -> 'X wins!'
+console.log(test.checkRow(0, 'X')) //false
+console.log(test.checkColumn(0, 'X')) //true
+
 
 
 
